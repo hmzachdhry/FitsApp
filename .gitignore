@@ -1,6 +1,13 @@
 # OSX
 #
 .DS_Store
+.vscode/
+.config/
+package-lock.json
+backend/config/
+package.json
+.bundle/
+
 
 # Xcode
 #
