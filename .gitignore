@@ -3,10 +3,9 @@
 .DS_Store
 .vscode/
 .config/
-package-lock.json
 backend/config/
+package-lock.json
 package.json
-.bundle/
 
 
 # Xcode
