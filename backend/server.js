@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
 const path = require('path');
+const authController = require('./controllers/authController');
 const PORT = 5432;
 
 app.use(bodyParser.json())
@@ -15,7 +16,8 @@ app.use(cors());
 //   return res.status(200).sendFile(path.join(__dirname, '/index.html'));
 // });
 
-
+app.post('signup', authController.signUp)
+app.post('login', authController.login)
 
 
 
