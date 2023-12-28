@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './AppNavigator';
 // import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -10,7 +11,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import LoginScreen from './screens/LoginScreen';
 
 import {
   Colors,
@@ -19,6 +19,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
 
 
 function Section({children, title}) {
@@ -55,6 +56,7 @@ function App() {
   };
 
   return (
+    <NavigationContainer>
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -64,7 +66,9 @@ function App() {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
-        <LoginScreen/>
+      {/* <LoginScreen /> */}
+
+        <AppNavigator />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -86,8 +90,11 @@ function App() {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </NavigationContainer> 
   );
 }
+
+// Styling
 
 const styles = StyleSheet.create({
   sectionContainer: {
