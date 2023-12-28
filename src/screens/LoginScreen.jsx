@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+
 import {
   View,
   Text,
@@ -7,13 +9,17 @@ import {
   StyleSheet,
 } from 'react-native';
 
+
+
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
     // Sign in logic 
+    const navigation = useNavigation();
     console.log('Signing in with:', {username, password});
+    navigation.navigate(console.log('pressed!'))
   };
 
   const handleSignUp = () => {
