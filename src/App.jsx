@@ -1,6 +1,5 @@
-
-
 import React from 'react';
+
 // import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -11,6 +10,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import LoginScreen from './screens/LoginScreen';
 
 import {
   Colors,
@@ -64,6 +64,7 @@ function App() {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <LoginScreen/>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
