@@ -11,7 +11,9 @@ const AppNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.screen name="SignUp" component={SignUpScreen} />
       {/* Add other screens here */}
+    
     </Stack.Navigator>
   );
 };
