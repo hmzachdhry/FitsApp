@@ -10,31 +10,42 @@ import {
 } from 'react-native';
 
 const SignUpScreen = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [usernameError, setUsernameError] = useState('');
 
   const animatedValue = useRef(new Animated.Value(0)).current;
 
-  const handleNameSubmit = () => {
-    animateInput(1);
+  const handleUsernameSubmit = () => {
+    const isUsernameValid = checkUsernameValidity(username);
+
+    if (isUsernameValid) {
+      setUsernameError('');
+      animateInput(1);
+    } else {
+      setUsernameError('Username already in use. Try another one.');
+    }
   };
 
-  const handleUsernameSubmit = () => {
+  const handleEmailSubmit = () => {
     animateInput(2);
   };
 
   const handlePasswordSubmit = () => {
-    animateInput(3);
-  };
-
-  const handleEmailSubmit = () => {
-    // Save the user information to the backend or perform other actions
-    console.log('Name:', name);
     console.log('Username:', username);
     console.log('Email:', email);
     console.log('Password:', password);
+  };
+
+  const checkUsernameValidity = enteredUsername => {
+    // Check if the username exists here
+    const existingUsernames = [
+      'existinguser1',
+      'existinguser2',
+      'existinguser3',
+    ];
+    return !existingUsernames.includes(enteredUsername);
   };
 
   const animateInput = step => {
@@ -47,36 +58,36 @@ const SignUpScreen = () => {
   };
 
   const translateY = animatedValue.interpolate({
-    inputRange: [0, 1, 2, 3],
-    outputRange: [0, -200, -400, -600],
+    inputRange: [0, 1, 2],
+    outputRange: [0, -200, -400],
   });
 
   return (
     <View style={styles.container}>
       <Animated.View
         style={[styles.inputContainer, {transform: [{translateY}]}]}>
-        {animatedValue._value === 0 && (
-          <>
-            <Text>Name:</Text>
-            <TextInput
-              style={styles.input}
-              value={name}
-              onChangeText={text => setName(text)}
-              onSubmitEditing={handleNameSubmit}
-            />
-          </>
-        )}
+        <Text>Username:</Text>
+        <TextInput
+          style={styles.input}
+          value={username}
+          onChangeText={text => setUsername(text)}
+          onSubmitEditing={handleUsernameSubmit}
+        />
+        <Text style={styles.errorText}>{usernameError}</Text>
+
         {animatedValue._value === 1 && (
           <>
-            <Text>Username:</Text>
+            <Text>Email:</Text>
             <TextInput
               style={styles.input}
-              value={username}
-              onChangeText={text => setUsername(text)}
-              onSubmitEditing={handleUsernameSubmit}
+              value={email}
+              onChangeText={text => setEmail(text)}
+              keyboardType="email-address"
+              onSubmitEditing={handleEmailSubmit}
             />
           </>
         )}
+
         {animatedValue._value === 2 && (
           <>
             <Text>Password:</Text>
@@ -86,18 +97,6 @@ const SignUpScreen = () => {
               onChangeText={text => setPassword(text)}
               secureTextEntry
               onSubmitEditing={handlePasswordSubmit}
-            />
-          </>
-        )}
-        {animatedValue._value === 3 && (
-          <>
-            <Text>Email:</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={text => setEmail(text)}
-              keyboardType="email-address"
-              onSubmitEditing={handleEmailSubmit}
             />
           </>
         )}
@@ -124,6 +123,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
   },
 });
 
