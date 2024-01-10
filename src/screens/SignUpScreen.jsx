@@ -39,7 +39,7 @@ const SignUpScreen = () => {
   };
 
   const checkUsernameValidity = enteredUsername => {
-    // Check if the username exists here
+    // Check if the username exists in the backend
     const existingUsernames = [
       'existinguser1',
       'existinguser2',
