@@ -31,7 +31,10 @@ const LoginScreen = () => {
       // Handle error here
     }
   };
-
+  // Navigates to SignUpScreen when "sign up" button is pressed
+  const handleSignUp = () => {
+    navigation.navigate('SignUp')
+  }
   const handleForgotPassword = () => {
     // Navigates to ForgotPasswordScreen when 'Forgot Password' button is pressed
     navigation.navigate('ForgotPassword');
@@ -53,6 +56,7 @@ const LoginScreen = () => {
         onChangeText={text => setPassword(text)}
         secureTextEntry
       />
+      <Button title="SignUp" onPress={handleSignUp} />
       <Button title="Login" onPress={handleLogin} />
       <Text style={styles.forgotPassword} onPress={handleForgotPassword}>
         Forgot Password?
