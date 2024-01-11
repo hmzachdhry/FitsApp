@@ -1,41 +1,43 @@
 import React, {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
-
-
+import {View, Text, TextInput, Button, StyleSheet, Alert} from 'react-native';
 
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = async () => {
+    try {
+      // Make a request to your backend for authentication
+      const response = await fetch('insert backend URL here', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username, password}),
+      });
 
-  const handleSignIn = () => {
-    // Sign in logic 
-    const navigation = useNavigation();
-    console.log('Signing in with:', {username, password});
-    navigation.navigate(console.log('pressed!'))
-  };
-
-  const handleSignUp = () => {
-    // Sign-up navigation logic 
-    console.log('Navigate to Sign Up screen');
+      if (response.ok) {
+        // If authentication is successful
+        const data = await response.json();
+        Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
+      } else {
+        // If authentication failed
+        Alert.alert('Login Failed', 'Invalid username or password.');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error 
+    }
   };
 
   const handleForgotPassword = () => {
-    // Forgot password navigation logic
-    console.log('Navigate to Forgot Password screen');
+    // forgot password functionality
+    Alert.alert('Forgot Password', 'This feature is not implemented yet.');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text>Login</Text>
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -45,19 +47,14 @@ const LoginScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Password"
-        secureTextEntry
         value={password}
         onChangeText={text => setPassword(text)}
+        secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
-        <Text style={styles.buttonText}>Sign In</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleForgotPassword}>
-        <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-      </TouchableOpacity>
+      <Button title="Login" onPress={handleLogin} />
+      <Text style={styles.forgotPassword} onPress={handleForgotPassword}>
+        Forgot Password?
+      </Text>
     </View>
   );
 };
@@ -67,38 +64,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 16,
-    paddingLeft: 8,
-    width: '100%',
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    width: '80%',
   },
-  button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 8,
-    width: '100%',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  forgotPasswordText: {
+  forgotPassword: {
+    marginTop: 10,
     color: 'blue',
-    textDecorationLine: 'underline',
   },
 });
 
