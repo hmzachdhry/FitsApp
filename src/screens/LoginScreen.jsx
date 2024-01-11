@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button, StyleSheet, Alert} from 'react-native';
-
+import {useNavigation} from '@react-navigation/native';
+import ForgotPasswordScreen from './ForgotPasswordScreen';
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState();
+  const navigation = useNavigation();
 
   const handleLogin = async () => {
     try {
-      // Make a request to your backend for authentication
+      // Make a request to backend for authentication
       const response = await fetch('insert backend URL here', {
         method: 'POST',
         headers: {
@@ -26,13 +28,13 @@ const LoginScreen = () => {
       }
     } catch (error) {
       console.error(error);
-      // Handle error 
+      // Handle error here
     }
   };
 
   const handleForgotPassword = () => {
-    // forgot password functionality
-    Alert.alert('Forgot Password', 'This feature is not implemented yet.');
+  
+    navigation.navigate('ForgotPassword');
   };
 
   return (
