@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
@@ -23,8 +23,6 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
-
 
 function Section({children, title}) {
   const isDarkMode = useColorScheme() === 'dark';
@@ -71,9 +69,13 @@ function App() {
           contentInsetAdjustmentBehavior="automatic"
           style={backgroundStyle}>
           <Header />
-         
+
           <Stack.Navigator initialRouteName="Login">
             <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPasswordScreen}
+            />
             <Stack.screen name="SignUp" component={SignUpScreen} />
             <Stack.screen name="Home" component={HomeScreen} />
             {/* Add other screens here */}

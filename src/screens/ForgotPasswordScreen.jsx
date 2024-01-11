@@ -24,7 +24,7 @@ const ForgotPasswordScreen = ({navigation}) => {
           'Password Reset',
           'An email with instructions has been sent to your email address.',
         );
-        // Navigate back to the login screen
+        // Navigate back to the login screen or prompt to open up email app?
         navigation.goBack();
       } else {
         // If password reset request failed
