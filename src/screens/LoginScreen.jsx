@@ -33,7 +33,7 @@ const LoginScreen = () => {
   };
 
   const handleForgotPassword = () => {
-  
+    // Navigates to ForgotPasswordScreen when 'Forgot Password' button is pressed
     navigation.navigate('ForgotPassword');
   };
 

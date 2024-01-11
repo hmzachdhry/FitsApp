@@ -4,8 +4,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
-import AppNavigator from './AppNavigator';
-// import type {PropsWithChildren} from 'react';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+
+
 import {
   SafeAreaView,
   ScrollView,
