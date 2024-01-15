@@ -35,6 +35,7 @@ function App() {
     </NavigationContainer>
   );
 }
+// ScrollView doesn't allow the stack navigator components to render for some reason
 
 // Styling
 
