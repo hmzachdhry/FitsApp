@@ -19,8 +19,8 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <SafeAreaView style={{ flex: 1}}>
+        {/* <ScrollView contentInsetAdjustmentBehavior="automatic"> */}
           <Stack.Navigator initialRouteName="Login">
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
@@ -30,7 +30,7 @@ function App() {
             />
             {/* Add other screens here */}
           </Stack.Navigator>
-        </ScrollView>
+        {/* </ScrollView> */}
       </SafeAreaView>
     </NavigationContainer>
   );

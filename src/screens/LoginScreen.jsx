@@ -8,28 +8,28 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleLogin = async () => {
-    // try {
-    //   // Make a request to backend for authentication
-    //   const response = await fetch('insert backend URL here', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({username, password}),
-    //   });
+    try {
+      // Make a request to backend for authentication
+      const response = await fetch('insert backend URL here', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username, password}),
+      });
 
-    //   if (response.ok) {
-    //     // If authentication is successful
-    //     const data = await response.json();
-    //     Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
-    //   } else {
-    //     // If authentication failed
-    //     Alert.alert('Login Failed', 'Invalid username or password.');
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   // Handle error here
-    // }
+      if (response.ok) {
+        // If authentication is successful
+        const data = await response.json();
+        Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
+      } else {
+        // If authentication failed
+        Alert.alert('Login Failed', 'Invalid username or password.');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error here
+    }
   };
   // Navigates to SignUpScreen when "sign up" button is pressed
   const handleSignUp = () => {
@@ -41,28 +41,27 @@ const LoginScreen = () => {
   };
 
   return (
-    // <View style={styles.container}>
-    //   <Text>Login</Text>
-    //   <TextInput
-    //     style={styles.input}
-    //     placeholder="Username"
-    //     value={username}
-    //     onChangeText={text => setUsername(text)}
-    //   />
-    //   <TextInput
-    //     style={styles.input}
-    //     placeholder="Password"
-    //     value={password}
-    //     onChangeText={text => setPassword(text)}
-    //     secureTextEntry
-    //   />
-    //   <Button title="SignUp" onPress={handleSignUp} />
-    //   <Button title="Login" onPress={handleLogin} />
-    //   <Text style={styles.forgotPassword} onPress={handleForgotPassword}>
-    //     Forgot Password?
-    //   </Text>
-    // </View>
-    <Button title="Login"/>
+    <View style={styles.container}>
+      <Text>Login</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        value={username}
+        onChangeText={text => setUsername(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        value={password}
+        onChangeText={text => setPassword(text)}
+        secureTextEntry
+      />
+      <Button title="Login" onPress={handleLogin} />
+      <Button title="Sign Up" onPress={handleSignUp} />
+      <Text style={styles.forgotPassword} onPress={handleForgotPassword}>
+        Forgot Password?
+      </Text>
+    </View>
   );
 };
 
