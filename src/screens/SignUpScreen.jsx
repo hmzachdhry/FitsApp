@@ -57,15 +57,22 @@ const SignUpScreen = () => {
     }).start();
   };
 
-  const translateY = animatedValue.interpolate({
-    inputRange: [0, 1, 2],
-    outputRange: [0, -250, -500], // Adjust these values based on your layout
-  });
-
   return (
     <View style={styles.container}>
       <Animated.View
-        style={[styles.inputContainer, {transform: [{translateY}]}]}>
+        style={[
+          styles.inputContainer,
+          {
+            transform: [
+              {
+                translateY: animatedValue.interpolate({
+                  inputRange: [0, 1, 2],
+                  outputRange: [0, -250, -500],
+                }),
+              },
+            ],
+          },
+        ]}>
         {animatedValue._value === 0 && (
           <>
             <Text>Username:</Text>
@@ -78,6 +85,22 @@ const SignUpScreen = () => {
             <Text style={styles.errorText}>{usernameError}</Text>
           </>
         )}
+      </Animated.View>
+
+      <Animated.View
+        style={[
+          styles.inputContainer,
+          {
+            transform: [
+              {
+                translateY: animatedValue.interpolate({
+                  inputRange: [0, 1, 2],
+                  outputRange: [0, -250, -500],
+                }),
+              },
+            ],
+          },
+        ]}>
         {animatedValue._value === 1 && (
           <>
             <Text>Email:</Text>
@@ -90,6 +113,22 @@ const SignUpScreen = () => {
             />
           </>
         )}
+      </Animated.View>
+
+      <Animated.View
+        style={[
+          styles.inputContainer,
+          {
+            transform: [
+              {
+                translateY: animatedValue.interpolate({
+                  inputRange: [0, 1, 2],
+                  outputRange: [0, -250, -500],
+                }),
+              },
+            ],
+          },
+        ]}>
         {animatedValue._value === 2 && (
           <>
             <Text>Password:</Text>
