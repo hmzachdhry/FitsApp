@@ -49,57 +49,66 @@ const SignUpScreen = () => {
   };
 
   const animateInput = step => {
-    Animated.timing(animatedValue, {
+    Animated.spring(animatedValue, {
       toValue: step,
-      duration: 500,
-      easing: Easing.ease,
+      friction: 8, // Adjust the friction value for a smoother animation
       useNativeDriver: false,
     }).start();
   };
 
   const translateY = animatedValue.interpolate({
     inputRange: [0, 1, 2],
-    outputRange: [0, -200, -400],
+    outputRange: [0, -400, -800], // Adjust the values based on your layout
   });
+
+  const renderInput = () => {
+    if (animatedValue._value === 0) {
+      return (
+        <>
+          <Text>Username:</Text>
+          <TextInput
+            style={styles.input}
+            value={username}
+            onChangeText={text => setUsername(text)}
+            onSubmitEditing={handleUsernameSubmit}
+          />
+          <Text style={styles.errorText}>{usernameError}</Text>
+        </>
+      );
+    } else if (animatedValue._value === 1) {
+      return (
+        <>
+          <Text>Email:</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={text => setEmail(text)}
+            keyboardType="email-address"
+            onSubmitEditing={handleEmailSubmit}
+          />
+        </>
+      );
+    } else if (animatedValue._value === 2) {
+      return (
+        <>
+          <Text>Password:</Text>
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={text => setPassword(text)}
+            secureTextEntry
+            onSubmitEditing={handlePasswordSubmit}
+          />
+        </>
+      );
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Animated.View
         style={[styles.inputContainer, {transform: [{translateY}]}]}>
-        <Text>Username:</Text>
-        <TextInput
-          style={styles.input}
-          value={username}
-          onChangeText={text => setUsername(text)}
-          onSubmitEditing={handleUsernameSubmit}
-        />
-        <Text style={styles.errorText}>{usernameError}</Text>
-
-        {animatedValue._value === 1 && (
-          <>
-            <Text>Email:</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={text => setEmail(text)}
-              keyboardType="email-address"
-              onSubmitEditing={handleEmailSubmit}
-            />
-          </>
-        )}
-
-        {animatedValue._value === 2 && (
-          <>
-            <Text>Password:</Text>
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={text => setPassword(text)}
-              secureTextEntry
-              onSubmitEditing={handlePasswordSubmit}
-            />
-          </>
-        )}
+        {renderInput()}
       </Animated.View>
 
       <Button title="Submit" onPress={handlePasswordSubmit} />
