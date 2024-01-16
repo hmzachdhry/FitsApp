@@ -1,35 +1,26 @@
-import React, {useState, useRef} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Button,
-  StyleSheet,
-  Animated,
-  Easing,
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
 
 const SignUpScreen = () => {
+  const [step, setStep] = useState(0);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
-
-  const animatedValue = useRef(new Animated.Value(0)).current;
 
   const handleUsernameSubmit = () => {
     const isUsernameValid = checkUsernameValidity(username);
 
     if (isUsernameValid) {
       setUsernameError('');
-      animateInput(1);
+      setStep(1);
     } else {
       setUsernameError('Username already in use. Try another one.');
     }
   };
 
   const handleEmailSubmit = () => {
-    animateInput(2);
+    setStep(2);
   };
 
   const handlePasswordSubmit = () => {
@@ -48,100 +39,42 @@ const SignUpScreen = () => {
     return !existingUsernames.includes(enteredUsername);
   };
 
-  const animateInput = step => {
-    Animated.timing(animatedValue, {
-      toValue: step,
-      duration: 500,
-      easing: Easing.ease,
-      useNativeDriver: false,
-    }).start();
-  };
-
   return (
     <View style={styles.container}>
-      <Animated.View
-        style={[
-          styles.inputContainer,
-          {
-            transform: [
-              {
-                translateY: animatedValue.interpolate({
-                  inputRange: [0, 1, 2],
-                  outputRange: [0, -250, -500],
-                }),
-              },
-            ],
-          },
-        ]}>
-        {animatedValue._value === 0 && (
-          <>
-            <Text>Username:</Text>
-            <TextInput
-              style={styles.input}
-              value={username}
-              onChangeText={text => setUsername(text)}
-              onSubmitEditing={handleUsernameSubmit}
-            />
-            <Text style={styles.errorText}>{usernameError}</Text>
-          </>
-        )}
-      </Animated.View>
+      <Text>Sign Up</Text>
 
-      <Animated.View
-        style={[
-          styles.inputContainer,
-          {
-            transform: [
-              {
-                translateY: animatedValue.interpolate({
-                  inputRange: [0, 1, 2],
-                  outputRange: [0, -250, -500],
-                }),
-              },
-            ],
-          },
-        ]}>
-        {animatedValue._value === 1 && (
-          <>
-            <Text>Email:</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={text => setEmail(text)}
-              keyboardType="email-address"
-              onSubmitEditing={handleEmailSubmit}
-            />
-          </>
-        )}
-      </Animated.View>
+      <View style={{opacity: step === 0 ? 1 : 0}}>
+        <Text>Username:</Text>
+        <TextInput
+          style={styles.input}
+          value={username}
+          onChangeText={text => setUsername(text)}
+          onSubmitEditing={handleUsernameSubmit}
+        />
+        <Text style={styles.errorText}>{usernameError}</Text>
+      </View>
 
-      <Animated.View
-        style={[
-          styles.inputContainer,
-          {
-            transform: [
-              {
-                translateY: animatedValue.interpolate({
-                  inputRange: [0, 1, 2],
-                  outputRange: [0, -250, -500],
-                }),
-              },
-            ],
-          },
-        ]}>
-        {animatedValue._value === 2 && (
-          <>
-            <Text>Password:</Text>
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={text => setPassword(text)}
-              secureTextEntry
-              onSubmitEditing={handlePasswordSubmit}
-            />
-          </>
-        )}
-      </Animated.View>
+      <View style={{opacity: step === 1 ? 1 : 0}}>
+        <Text>Email:</Text>
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={text => setEmail(text)}
+          keyboardType="email-address"
+          onSubmitEditing={handleEmailSubmit}
+        />
+      </View>
+
+      <View style={{opacity: step === 2 ? 1 : 0}}>
+        <Text>Password:</Text>
+        <TextInput
+          style={styles.input}
+          value={password}
+          onChangeText={text => setPassword(text)}
+          secureTextEntry
+          onSubmitEditing={handlePasswordSubmit}
+        />
+      </View>
 
       <Button title="Submit" onPress={handlePasswordSubmit} />
     </View>
@@ -154,12 +87,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputContainer: {
-    width: '80%',
-    marginBottom: 20,
-  },
   input: {
     height: 40,
+    width: '80%',
     borderColor: 'gray',
     borderWidth: 1,
     marginBottom: 10,
@@ -170,5 +100,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+
 
 export default SignUpScreen;
