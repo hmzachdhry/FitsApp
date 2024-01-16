@@ -89,11 +89,13 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: '80%',
+    width: '90%', // Increase the width as needed
     borderColor: 'gray',
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+    alignSelf: 'center', // Align input boxes to the center of the parent
+    textAlignVertical: 'center', // Vertically center the text in the input box
   },
   errorText: {
     color: 'red',
