@@ -10,6 +10,8 @@ import {
   Alert,
 } from 'react-native';
 
+// add fade in animation instead
+
 const SignUpScreen = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
