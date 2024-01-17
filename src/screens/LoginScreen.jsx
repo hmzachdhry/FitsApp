@@ -22,7 +22,8 @@ const LoginScreen = () => {
         // If authentication is successful
         const data = await response.json();
         Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
-        // navigate to HomeScreen here
+       
+        navigation.navigate('Home')
 
       } else {
         // If authentication failed

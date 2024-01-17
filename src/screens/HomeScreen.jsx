@@ -4,6 +4,4 @@ import {View, Text, TextInput, Button, StyleSheet, Alert} from 'react-native';
 
 
 
-
-
-const navigatiton = useNavigation()
+const navigation = useNavigation()
