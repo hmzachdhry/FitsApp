@@ -22,6 +22,8 @@ const LoginScreen = () => {
         // If authentication is successful
         const data = await response.json();
         Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
+        // navigate to HomeScreen here
+
       } else {
         // If authentication failed
         Alert.alert('Login Failed', 'Invalid username or password.');
@@ -35,6 +37,7 @@ const LoginScreen = () => {
   const handleSignUp = () => {
     navigation.navigate('SignUp')
   }
+  
   const handleForgotPassword = () => {
     // Navigates to ForgotPasswordScreen when 'Forgot Password' button is pressed
     navigation.navigate('ForgotPassword');
