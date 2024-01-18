@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
@@ -19,17 +20,21 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <SafeAreaView style={{ flex: 1}}>
+      <SafeAreaView style={styles.safeArea}>
         {/* <ScrollView contentInsetAdjustmentBehavior="automatic"> */}
-          <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen
-              name="ForgotPassword"
-              component={ForgotPasswordScreen}
-            />
-            {/* Add other screens here */}
-          </Stack.Navigator>
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={{
+            cardStyle: {backgroundColor: '#FAF0E4'},
+          }}>
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+          />
+        </Stack.Navigator>
         {/* </ScrollView> */}
       </SafeAreaView>
     </NavigationContainer>
@@ -57,5 +62,10 @@ function App() {
 //     fontWeight: '700',
 //   },
 // });
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+});
 
 export default App;
