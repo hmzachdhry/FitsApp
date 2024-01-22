@@ -21,12 +21,12 @@ const LoginScreen = () => {
       if (response.ok) {
         // If authentication is successful
         const data = await response.json();
-        Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
+        Alert.alert('Login Successful', `${data.username}!`);
        
         navigation.navigate('Home')
 
       } else {
-        // If authentication failed
+        // If authentication fails
         Alert.alert('Login Failed', 'Invalid username or password.');
       }
     } catch (error) {

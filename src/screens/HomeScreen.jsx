@@ -1,33 +1,72 @@
-import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, ScrollView, Animated, StyleSheet} from 'react-native';
 
-const handleLogin = async () => {
-  const navigation = useNavigation(); 
+const HomeScreen = () => {
+  const [weatherData, setWeatherData] = useState(null);
+  const scrollY = new Animated.Value(0);
 
-  try {
-    // Make a request to backend for auth
-    const response = await fetch('insert backend URL here', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({username, password}),
-    });
+  useEffect(() => {
+    // Fetch weather data from API
+    // Replace 'YOUR_API_KEY' and 'YOUR_CITY' with API key and city
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=YOUR_CITY&appid=YOUR_API_KEY`,
+    )
+      .then(response => response.json())
+      .then(data => setWeatherData(data))
+      .catch(error => console.error('Error fetching weather data:', error));
+  }, []);
 
-    if (response.ok) {
-      // If authentication is successful
-      const data = await response.json();
-      Alert.alert('Login Successful', `Welcome back, ${data.username}!`);
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, 150],
+    outputRange: [200, 100],
+    extrapolate: 'clamp',
+  });
 
-      // Navigate to HomeScreen 
-      navigation.navigate('Home'); 
-    } else {
-      // If auth fails
-      Alert.alert('Login Failed', 'Invalid username or password.');
-    }
-  } catch (error) {
-    console.error(error);
-    // Handle error 
-  }
+  return (
+    <View style={{flex: 1}}>
+      <ScrollView
+        style={{flex: 1}}
+        contentContainerStyle={{paddingTop: 200}}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {useNativeDriver: false},
+        )}
+        scrollEventThrottle={16}>
+       
+
+        {/* Weather */}
+        <Animated.View style={[styles.header, {height: headerHeight}]}>
+          {weatherData && (
+            <>
+              <Text
+                style={styles.weatherText}>{`${weatherData.main.temp}°C`}</Text>
+              <Text style={styles.cityText}>{weatherData.name}</Text>
+            </>
+          )}
+        </Animated.View>
+      </ScrollView>
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#3498db', // Customize background color
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  weatherText: {
+    fontSize: 24,
+    color: 'white',
+  },
+  cityText: {
+    fontSize: 16,
+    color: 'white',
+  },
+});
 
 export default HomeScreen;

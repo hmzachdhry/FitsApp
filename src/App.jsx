@@ -5,6 +5,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+import HomeScreen from './screens/HomeScreen';
 
 import {
   SafeAreaView,
