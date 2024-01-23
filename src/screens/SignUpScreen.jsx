@@ -56,7 +56,7 @@ const SignUpScreen = () => {
   const handleEmailSubmit = async () => {
     try {
       const response = await fetch('backendEndpoint/checkEmail', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -84,7 +84,7 @@ const SignUpScreen = () => {
     // Assume there's a registration endpoint on the backend
     try {
       const response = await fetch('backendEndpoint/register', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
