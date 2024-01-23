@@ -83,7 +83,7 @@ const SignUpScreen = () => {
   const handlePasswordSubmit = async () => {
     // Assume there's a registration endpoint on the backend
     try {
-      const response = await fetch('backend/register', {
+      const response = await fetch('backendEndpoint/register', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -122,7 +122,14 @@ const SignUpScreen = () => {
     <View style={styles.container}>
       <Animated.View
         style={[styles.inputContainer, {transform: [{translateY}]}]}>
-        {/* ... (same as before) */}
+        <Text>Username:</Text>
+        <TextInput
+          style={styles.input}
+          value={username}
+          onChangeText={text => setUsername(text)}
+          onSubmitEditing={handleUsernameSubmit}
+        />
+        <Text style={styles.errorText}>{usernameError}</Text>
 
         {animatedValue._value === 2 && (
           <>
