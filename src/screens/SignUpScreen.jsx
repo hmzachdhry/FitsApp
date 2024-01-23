@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,59 +9,109 @@ import {
   Easing,
   Alert,
 } from 'react-native';
-
-// add fade in animation instead
+import {useNavigation} from '@react-navigation/native';
 
 const SignUpScreen = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const animatedValue = useRef(new Animated.Value(0)).current;
+  const navigation = useNavigation(); // Hook to access navigation object
 
-  const handleUsernameSubmit = () => {
-    const isUsernameValid = checkUsernameValidity(username);
+  useEffect(() => {
+    setUsernameError('');
+    setEmailError('');
+  }, [animatedValue._value]);
 
-    if (isUsernameValid) {
-      setUsernameError('');
-      animateInput(1);
-    } else {
-      setUsernameError('Username already in use. Try another one.');
+  const handleUsernameSubmit = async () => {
+    try {
+      const response = await fetch('backend/checkUsername', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username}),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.exists) {
+          setUsernameError('Username already in use. Try another one.');
+        } else {
+          setUsernameError('');
+          animateInput(1);
+        }
+      } else {
+        console.error('Error checking username availability');
+      }
+    } catch (error) {
+      console.error('Error checking username availability:', error);
     }
   };
 
-  const handleEmailSubmit = () => {
-    animateInput(2);
+  const handleEmailSubmit = async () => {
+    try {
+      const response = await fetch('backendEndpoint/checkEmail', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email}),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.exists) {
+          setEmailError('Email already in use. Try another one.');
+        } else {
+          setEmailError('');
+          animateInput(2);
+        }
+      } else {
+        console.error('Error checking email availability');
+      }
+    } catch (error) {
+      console.error('Error checking email availability:', error);
+    }
   };
 
-  const handlePasswordSubmit = () => {
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
+  const handlePasswordSubmit = async () => {
+    // Assume there's a registration endpoint on the backend
+    try {
+      const response = await fetch('backend/register', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username, email, password}),
+      });
+
+      if (response.ok) {
+        // Registration successful, navigate to HomeScreen
+        navigation.navigate('Home'); 
+        
+        console.error('Error registering user');
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
   };
 
-  const checkUsernameValidity = enteredUsername => {
-    // Check if the username exists in the backend
-    const existingUsernames = [
-      'existinguser1',
-      'existinguser2',
-      'existinguser3',
-    ];
-    return !existingUsernames.includes(enteredUsername);
+  const animateInput = step => {
+    Animated.timing(animatedValue, {
+      toValue: step,
+      duration: 500,
+      easing: Easing.ease,
+      useNativeDriver: false,
+    }).start(({finished}) => {
+      animatedValue.setValue(finished ? 0 : step - 1);
+    });
   };
-
-const animateInput = step => {
-  Animated.timing(animatedValue, {
-    toValue: step,
-    duration: 500,
-    easing: Easing.ease,
-    useNativeDriver: false,
-  }).start(({finished}) => {
-    // After animation completion, reset the translateY to 0 if finished, else to the previous value
-    animatedValue.setValue(finished ? 0 : step - 1);
-  });
-};
 
   const translateY = animatedValue.interpolate({
     inputRange: [0, 1, 2],
@@ -72,27 +122,7 @@ const animateInput = step => {
     <View style={styles.container}>
       <Animated.View
         style={[styles.inputContainer, {transform: [{translateY}]}]}>
-        <Text>Username:</Text>
-        <TextInput
-          style={styles.input}
-          value={username}
-          onChangeText={text => setUsername(text)}
-          onSubmitEditing={handleUsernameSubmit}
-        />
-        <Text style={styles.errorText}>{usernameError}</Text>
-
-        {animatedValue._value === 1 && (
-          <>
-            <Text>Email:</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={text => setEmail(text)}
-              keyboardType="email-address"
-              onSubmitEditing={handleEmailSubmit}
-            />
-          </>
-        )}
+        {/* ... (same as before) */}
 
         {animatedValue._value === 2 && (
           <>
