@@ -16,8 +16,8 @@ app.use(cors());
 //   return res.status(200).sendFile(path.join(__dirname, '/index.html'));
 // });
 
-app.post('signup', authController.signUp)
-app.post('login', authController.login)
+app.post('/signup', authController.signUp)
+app.post('/login', authController.login)
 
 
 

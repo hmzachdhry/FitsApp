@@ -10,7 +10,7 @@ const LoginScreen = () => {
   const handleLogin = async () => {
     try {
       // Make a request to backend for authentication
-      const response = await fetch('insert backend URL here', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

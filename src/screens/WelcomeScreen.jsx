@@ -14,6 +14,10 @@ const WelcomeScreen = () => {
     // Navigate to the Login screen
     navigation.navigate('Login');
   };
+  const handleHome = () => {
+    // Navigates to ForgotPasswordScreen when 'Forgot Password' button is pressed
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={styles.container}>
@@ -26,6 +30,7 @@ const WelcomeScreen = () => {
       <View style={styles.buttonContainer}>
         <Button title="New User" onPress={handleSignUp} />
         <Button title="Login" onPress={handleLogin} />
+        <Button title="Home" onPress={handleHome} />
       </View>
     </View>
   );

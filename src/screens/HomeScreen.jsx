@@ -36,13 +36,12 @@ const HomeScreen = () => {
 
         {/* Weather */}
         <Animated.View style={[styles.header, {height: headerHeight}]}>
-          {weatherData && (
+          {/* {weatherData && (
             <>
               <Text
-                style={styles.weatherText}>{`${weatherData.main.temp}°C`}</Text>
               <Text style={styles.cityText}>{weatherData.name}</Text>
             </>
-          )}
+          )} */}
         </Animated.View>
       </ScrollView>
     </View>
