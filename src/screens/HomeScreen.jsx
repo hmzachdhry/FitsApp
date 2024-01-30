@@ -6,6 +6,7 @@ const HomeScreen = () => {
   const scrollY = new Animated.Value(0);
 
   useEffect(() => {
+    const weatherAPI = ''
     // Fetch weather data from API
     // Replace 'YOUR_API_KEY' and 'YOUR_CITY' with API key and city
     fetch(
