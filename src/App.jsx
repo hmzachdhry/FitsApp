@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import WelcomeScreen from './screens/WelcomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import SignUpScreen from './screens/SignUpScreen';
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
-import HomeScreen from './screens/HomeScreen';
+import WelcomeScreen from './components/Screens/WelcomeScreen';
+import LoginScreen from './components/Screens/LoginScreen';
+import SignUpScreen from './components/Screens/SignUpScreen';
+import ForgotPasswordScreen from './components/Screens/ForgotPasswordScreen';
+import HomeScreen from './components/Screens/HomeScreen/HomeScreen';
 
 import {
   SafeAreaView,
