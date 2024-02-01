@@ -1,19 +1,29 @@
-import { DataTypes } from 'sequelize';
-import { define, fn } from '../config/sequelize';
-import Outfits from './outfits';
+// const {DataTypes, Sequelize} = require('sequelize');
+// // const sequelize = require('sequelize');
+// const config = require('../config/config.json');
+// const {
+//   development: {database, username, password, dialect, host},
+// } = config;
 
-const Images = define('Images', {
-  url: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+// const sequelize = new Sequelize(database, username, password, {
+//   host,
+//   dialect,
+// });
 
-  description: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
+// const Outfits = require('./outfits');
 
-});
+// const Images = sequelize.define('Images', {
+//   url: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
 
-Images.belongsTo(Outfits, { foreignKey: 'outfit_id' }); 
-export default Images;
+//   description: {
+//     type: DataTypes.STRING,
+//     allowNull: true,
+//   },
+// });
+
+// Images.belongsTo(Outfits, {foreignKey: 'outfit_id'});
+
+// module.exports = {Images};

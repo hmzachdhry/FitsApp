@@ -1,24 +1,34 @@
-import { DataTypes } from 'sequelize';
-import { define } from '../config/sequelize';
-import Profiles from './profiles';
-import Outfits from './outfits';
+// const { DataTypes, Sequelize } = require('sequelize');
+// // const sequelize = require('sequelize');
+// const config = require('../config/config.json');
+// const {
+//   development: {database, username, password, dialect, host},
+// } = config;
 
-const Weather = define('Weather', {
-  temperature: {
-    type: DataTypes.FLOAT,
-    allowNull: true,
-  },
-  description: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  location: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+// const sequelize = new Sequelize(database, username, password, {
+//   host,
+//   dialect,
+// });
 
-Weather.belongsTo(Profiles, { foreignKey: 'profile_id' });
-Weather.belongsTo(Outfits, { foreignKey: 'outfit_id' });
+// const Profiles = require('./profiles');
+// const Outfits = require('./outfits');
 
-export default Weather;
+// const Weather = sequelize.define('Weather', {
+//   temperature: {
+//     type: DataTypes.FLOAT,
+//     allowNull: false,
+//   },
+//   description: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+//   location: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+// });
+
+// Weather.belongsTo(Profiles, {foreignKey: 'profile_id'});
+// Weather.belongsTo(Outfits, {foreignKey: 'outfit_id'});
+
+// module.exports = {Weather};

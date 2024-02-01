@@ -1,8 +1,18 @@
-import { DataTypes } from 'sequelize';
-import { define } from '../config/sequelize';
-import Profiles from './profiles';
+const {DataTypes, Sequelize} = require('sequelize');
+// const sequelize = require('sequelize');
+const config = require('../config/config.json');
+const {
+  development: {database, username, password, dialect, host},
+} = config;
 
-const Users = define('Users', {
+const sequelize = new Sequelize(database, username, password, {
+  host,
+  dialect,
+});
+
+const Profiles = require('./profiles');
+
+const Users = sequelize.define('Users', {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -20,7 +30,7 @@ const Users = define('Users', {
   },
 });
 
-Users.hasOne(Profiles, { foreignKey: 'user_id' }); // hosts profile model via foreign key
-// Users.hasMany (Outfit, { foreignKey: 'user_id' }) // do i need to connect user to outfit or can i just connect profile to outfit?
+// Users.hasOne(Profiles, {foreignKey: 'user_id'}); // hosts profile model via foreign key
+// Users.hasMany(Outfit, {foreignKey: 'user_id'}); // do i need to connect user to outfit or can i just connect profile to outfit?
 
-export default Users;
+module.exports = {Users};

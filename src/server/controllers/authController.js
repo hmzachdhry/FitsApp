@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {Users, Profiles} = require('../models');
+const Users = require('../models/users');
+const Profiles = require('../models/profiles');
 
 const secretkey = '1234';
 
@@ -41,7 +42,7 @@ const signUp = async (req, res, next) => {
 // User login
 const login = async (req, res, next) => {
   const {username, password} = req.body;
-
+  console.log({username, password, req, res, next});
   try {
     const user = await Users.findOne({
       where: {username},

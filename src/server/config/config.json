@@ -5,7 +5,7 @@
     "database": "fitsapp",
     "host": "localhost",
     "dialect": "postgres",
-    "port": 5432,
+    "port": 8085,
     "modelPaths": ["./backend/models"],
     "migrations-path": "./backend/migrations"
   },

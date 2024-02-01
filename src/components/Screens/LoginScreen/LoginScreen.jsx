@@ -9,6 +9,7 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleLogin = async () => {
+    console.log('inside handle login')
     try {
       // Make a request to backend for authentication
       const response = await fetch('/login', {
@@ -20,6 +21,7 @@ const LoginScreen = () => {
       });
 
       if (response.ok) {
+        console.log('response ok')
         // If authentication is successful
         const data = await response.json();
         Alert.alert('Login Successful', `${data.username}!`);
