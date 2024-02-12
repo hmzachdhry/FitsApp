@@ -7,7 +7,6 @@ const HomeScreen = () => {
   const scrollY = new Animated.Value(0);
 
   useEffect(() => {
-   
     // Fetch weather data from API
     // Replace 'YOUR_API_KEY' and 'YOUR_CITY' with API key and city
     fetch(
@@ -34,8 +33,6 @@ const HomeScreen = () => {
           {useNativeDriver: false},
         )}
         scrollEventThrottle={16}>
-       
-
         {/* Weather */}
         <Animated.View style={[styles.header, {height: headerHeight}]}>
           {/* {weatherData && (
@@ -49,25 +46,5 @@ const HomeScreen = () => {
     </View>
   );
 };
-
-// const styles = StyleSheet.create({
-//   header: {
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//     right: 0,
-//     backgroundColor: '#3498db', // Customize background color
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
-//   weatherText: {
-//     fontSize: 24,
-//     color: 'white',
-//   },
-//   cityText: {
-//     fontSize: 16,
-//     color: 'white',
-//   },
-// });
 
 export default HomeScreen;
