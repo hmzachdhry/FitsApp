@@ -9,7 +9,7 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    marginHorizontal: 1,
+    marginHorizontal: 4,
   },
   buttonText: {
     color: 'white',

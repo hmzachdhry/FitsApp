@@ -108,6 +108,10 @@ const SignUpScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.titleContainer}>
+      <Text style={styles.appName}>FITS</Text>
+      </View>
+      <Text style={styles.message}>Hi there! What should we call you?</Text>
       <TextInput
         style={styles.input}
         placeholder='Username'

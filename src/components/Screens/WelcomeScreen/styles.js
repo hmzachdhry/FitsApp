@@ -6,15 +6,23 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  titleContainer: {
+    position: 'absolute',
+    top: 115,
+    left: 115,
+    right: 0,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
   appName: {
-    fontSize: 24,
+    fontSize: 50,
     fontWeight: 'bold',
-    marginBottom: 10,
     color: '#EE4E34',
   },
   message: {
     textAlign: 'center',
     marginBottom: 20,
+    color: '#2B2A4C',
   },
   //   image: {
   //     width: 200,

@@ -50,6 +50,9 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.appName}>FITS</Text>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Username"

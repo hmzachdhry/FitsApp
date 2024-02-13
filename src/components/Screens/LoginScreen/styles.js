@@ -6,6 +6,19 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  titleContainer: {
+    position: 'absolute',
+    top: 115,
+    left: 115,
+    right: 0,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  appName: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: '#EE4E34',
+  },
   input: {
     height: 40,
     borderColor: 'gray',

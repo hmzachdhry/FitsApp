@@ -16,6 +16,10 @@ const EmailScreen = () => {
 
   return (
       <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.appName}>FITS</Text>
+        </View>
+        <Text style={styles.message}>What's your email?</Text>
       <TextInput
         style={styles.input}
         placeholder='Email'

@@ -6,6 +6,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  titleContainer: {
+    position: 'absolute',
+    top: 115,
+    left: 115,
+    right: 0,
+    paddingHorizontal: 20, 
+    paddingTop: 20, 
+  },
   inputContainer: {
     width: '80%',
     marginBottom: 20,
@@ -15,7 +23,7 @@ export const styles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 20,
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 15,
     paddingHorizontal: 10,
     width: '65%',
   },
@@ -35,9 +43,15 @@ export const styles = StyleSheet.create({
   message: {
     color: '#2B2A4C',
     fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  appName: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: '#EE4E34',
   },
   errorText: {
     color: 'red',
-    marginBottom: 10,
+    // marginBottom: 10,
   },
 });

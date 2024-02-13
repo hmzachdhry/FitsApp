@@ -23,7 +23,10 @@ const WelcomeScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.titleContainer}>
+
       <Text style={styles.appName}>FITS</Text>
+      </View>
       <Text style={styles.message}>
         Explore your very own world of outfits and find the right fit for you
         today
