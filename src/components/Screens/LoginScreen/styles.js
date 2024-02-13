@@ -9,13 +9,22 @@ export const styles = StyleSheet.create({
   input: {
     height: 40,
     borderColor: 'gray',
+    borderRadius: 20,
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
-    width: '80%',
+    width: '70%',
   },
   forgotPassword: {
     marginTop: 10,
-    color: 'blue',
+    color: 'gray',
+  },
+  button: {
+    backgroundColor: '#2B2A4C',
+    borderRadius: 20,
+    width: 100,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

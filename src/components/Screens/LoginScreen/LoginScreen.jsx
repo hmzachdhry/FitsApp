@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Button, Alert} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './styles';
+import { globalStyles } from '../globalStyles';
 
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
@@ -49,7 +50,6 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -63,8 +63,10 @@ const LoginScreen = () => {
         onChangeText={text => setPassword(text)}
         secureTextEntry
       />
-      <Button title="Login" onPress={handleLogin} />
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={globalStyles.buttonText}>Sign In</Text>
+      </TouchableOpacity>
+
       <Text style={styles.forgotPassword} onPress={handleForgotPassword}>
         Forgot Password?
       </Text>

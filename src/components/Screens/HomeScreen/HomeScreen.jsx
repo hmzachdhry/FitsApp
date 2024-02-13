@@ -6,16 +6,16 @@ const HomeScreen = () => {
   const [weatherData, setWeatherData] = useState(null);
   const scrollY = new Animated.Value(0);
 
-  useEffect(() => {
-    // Fetch weather data from API
-    // Replace 'YOUR_API_KEY' and 'YOUR_CITY' with API key and city
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=YOUR_CITY&appid=YOUR_API_KEY`,
-    )
-      .then(response => response.json())
-      .then(data => setWeatherData(data))
-      .catch(error => console.error('Error fetching weather data:', error));
-  }, []);
+  // useEffect(() => {
+  //   // Fetch weather data from API
+  //   // Replace 'YOUR_API_KEY' and 'YOUR_CITY' with API key and city
+  //   fetch(
+  //     `https://api.openweathermap.org/data/2.5/weather?q=YOUR_CITY&appid=YOUR_API_KEY`,
+  //   )
+  //     .then(response => response.json())
+  //     .then(data => setWeatherData(data))
+  //     .catch(error => console.error('Error fetching weather data:', error));
+  // }, []);
 
   const headerHeight = scrollY.interpolate({
     inputRange: [0, 150],

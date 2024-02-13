@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, Button, Alert} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import {styles} from './styles'
+import { globalStyles } from '../globalStyles';
 
 const ForgotPasswordScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -42,7 +43,6 @@ const ForgotPasswordScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text>Forgot Password</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -50,7 +50,9 @@ const ForgotPasswordScreen = ({navigation}) => {
         onChangeText={text => setEmail(text)}
         keyboardType="email-address"
       />
-      <Button title="Reset Password" onPress={handleResetPassword} />
+      <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
+        <Text style={globalStyles.buttonText}>Reset Password</Text>
+      </TouchableOpacity>
     </View>
   );
 };

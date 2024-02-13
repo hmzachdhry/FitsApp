@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#EE4E34',
   },
   message: {
     textAlign: 'center',
@@ -25,5 +26,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '80%',
+    marginBottom: 20, // Add margin bottom for spacing between buttons
   },
 });

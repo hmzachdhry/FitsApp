@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Button} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './styles';
+import {globalStyles} from '../globalStyles'
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
@@ -29,9 +30,15 @@ const WelcomeScreen = () => {
       </Text>
       {/* <Image source={require('path to img')} style={styles.image} /> */}
       <View style={styles.buttonContainer}>
-        <Button title="New User" onPress={handleSignUp} />
-        <Button title="Login" onPress={handleLogin} />
-        <Button title="Home" onPress={handleHome} />
+        <TouchableOpacity style={globalStyles.secondaryButton} onPress={handleSignUp}>
+          <Text style={globalStyles.secondaryButtonText}>New User</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={globalStyles.button} onPress={handleLogin}>
+          <Text style={globalStyles.buttonText}>Sign In</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={globalStyles.button} onPress={handleHome}>
+          <Text style={globalStyles.buttonText}>Home</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
