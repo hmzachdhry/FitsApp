@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from './components/Screens/WelcomeScreen';
 import LoginScreen from './components/Screens/LoginScreen';
-import SignUpScreen from './components/Screens/SignUpScreen';
+import {SignUpScreen, EmailScreen, EmailVerification, PasswordScreen} from './components/Screens/SignUpScreen';
 import ForgotPasswordScreen from './components/Screens/ForgotPasswordScreen';
 import HomeScreen from './components/Screens/HomeScreen';
 
@@ -15,7 +15,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import EmailScreen from './components/Screens/SignUpScreen/EmailScreen';
+// import EmailScreen from './components/Screens/SignUpScreen/EmailScreen';
 
 const Stack = createStackNavigator();
 
