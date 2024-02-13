@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TextInput,
-  Button,
+  TouchableOpacity,
   Animated,
   Easing,
   Alert,
@@ -100,52 +100,24 @@ const SignUpScreen = () => {
     } catch (error) {
       console.error('Error registering user:', error);
     }
-  };
-
-  const animateInput = step => {
-    Animated.timing(animatedValue, {
-      toValue: step,
-      duration: 500,
-      easing: Easing.ease,
-      useNativeDriver: false,
-    }).start(({finished}) => {
-      animatedValue.setValue(finished ? 0 : step - 1);
-    });
-  };
-
-  const translateY = animatedValue.interpolate({
-    inputRange: [0, 1, 2],
-    outputRange: [0, -200, -400],
-  });
+  };  
 
   return (
     <View style={styles.container}>
-      <Animated.View
-        style={[styles.inputContainer, {transform: [{translateY}]}]}>
-        <Text>Username:</Text>
-        <TextInput
-          style={styles.input}
-          value={username}
-          onChangeText={text => setUsername(text)}
-          onSubmitEditing={handleUsernameSubmit}
-        />
-        <Text style={styles.errorText}>{usernameError}</Text>
+      <TextInput
+        style={styles.input}
+        value={username}
+        onChangeText={text => setUsername(text)}
+        onSubmitEditing={handleUsernameSubmit}
+      />
+      <Text style={styles.message}>
+        Your username will be used to login
+      </Text>
+      <Text style={styles.errorText}>{usernameError}</Text>
 
-        {animatedValue._value === 2 && (
-          <>
-            <Text>Password:</Text>
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={text => setPassword(text)}
-              secureTextEntry
-              onSubmitEditing={handlePasswordSubmit}
-            />
-          </>
-        )}
-      </Animated.View>
-
-      <Button title="Submit" onPress={handlePasswordSubmit} />
+      <TouchableOpacity style={styles.button} onPress={handlePasswordSubmit}>
+        <Text style={styles.buttonText}>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 };

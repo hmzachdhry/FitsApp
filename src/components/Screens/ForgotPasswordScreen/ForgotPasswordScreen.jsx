@@ -51,7 +51,7 @@ const ForgotPasswordScreen = ({navigation}) => {
         keyboardType="email-address"
       />
       <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
-        <Text style={globalStyles.buttonText}>Reset Password</Text>
+        <Text style={styles.buttonText}>Reset Password</Text>
       </TouchableOpacity>
     </View>
   );
