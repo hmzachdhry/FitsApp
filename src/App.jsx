@@ -15,6 +15,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import EmailScreen from './components/Screens/SignUpScreen/EmailScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +31,8 @@ function App() {
           }}>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Sign Up" component={SignUpScreen} />
+          <Stack.Screen name= "Email" component={EmailScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen
             name="ForgotPassword"
@@ -42,28 +44,7 @@ function App() {
     </NavigationContainer>
   );
 }
-// ScrollView doesn't allow the stack navigator components to render for some reason
 
-// Styling
-
-// const styles = StyleSheet.create({
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-// });
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,

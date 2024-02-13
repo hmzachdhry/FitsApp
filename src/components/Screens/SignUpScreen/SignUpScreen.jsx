@@ -18,13 +18,13 @@ const SignUpScreen = () => {
   const [usernameError, setUsernameError] = useState('');
   const [emailError, setEmailError] = useState('');
 
-  const animatedValue = useRef(new Animated.Value(0)).current;
+  
   const navigation = useNavigation(); // Hook to access navigation object
 
   useEffect(() => {
     setUsernameError('');
     setEmailError('');
-  }, [animatedValue._value]);
+  }, []);
 
   const handleUsernameSubmit = async () => {
     try {
@@ -43,7 +43,7 @@ const SignUpScreen = () => {
           setUsernameError('Username already in use. Try another one.');
         } else {
           setUsernameError('');
-          animateInput(1);
+          
         }
       } else {
         console.error('Error checking username availability');
@@ -53,59 +53,64 @@ const SignUpScreen = () => {
     }
   };
 
-  const handleEmailSubmit = async () => {
-    try {
-      const response = await fetch('backendEndpoint/checkEmail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({email}),
-      });
+  // const handleEmailSubmit = async () => {
+  //   try {
+  //     const response = await fetch('backendEndpoint/checkEmail', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({email}),
+  //     });
 
-      if (response.ok) {
-        const data = await response.json();
+  //     if (response.ok) {
+  //       const data = await response.json();
 
-        if (data.exists) {
-          setEmailError('Email already in use. Try another one.');
-        } else {
-          setEmailError('');
-          animateInput(2);
-        }
-      } else {
-        console.error('Error checking email availability');
-      }
-    } catch (error) {
-      console.error('Error checking email availability:', error);
-    }
-  };
-
-  const handlePasswordSubmit = async () => {
-    // Assume there's a registration endpoint on the backend
-    try {
-      const response = await fetch('backendEndpoint/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({username, email, password}),
-      });
-
-      if (response.ok) {
-        // Registration successful, navigate to HomeScreen
-        navigation.navigate('Home'); 
+  //       if (data.exists) {
+  //         setEmailError('Email already in use. Try another one.');
+  //       } else {
+  //         setEmailError('');
         
-        console.error('Error registering user');
-      }
-    } catch (error) {
-      console.error('Error registering user:', error);
-    }
-  };  
+  //       }
+  //     } else {
+  //       console.error('Error checking email availability');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error checking email availability:', error);
+  //   }
+  // };
+
+  // const handlePasswordSubmit = async () => {
+  //   // Assume there's a registration endpoint on the backend
+  //   try {
+  //     const response = await fetch('backendEndpoint/register', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({username, email, password}),
+  //     });
+
+  //     if (response.ok) {
+  //       // Registration successful, navigate to HomeScreen
+  //       navigation.navigate('Home');
+
+  //       console.error('Error registering user');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error registering user:', error);
+  //   }
+  // };  
+
+  const handleEmail = () => {
+    navigation.navigate('Email')
+  }
 
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
+        placeholder='Username'
         value={username}
         onChangeText={text => setUsername(text)}
         onSubmitEditing={handleUsernameSubmit}
@@ -115,7 +120,7 @@ const SignUpScreen = () => {
       </Text>
       <Text style={styles.errorText}>{usernameError}</Text>
 
-      <TouchableOpacity style={styles.button} onPress={handlePasswordSubmit}>
+      <TouchableOpacity style={styles.button} onPress={handleEmail}>
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
     </View>

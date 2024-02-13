@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
 
   const handleSignUp = () => {
     // Navigate to the SignUp screen
-    navigation.navigate('SignUp');
+    navigation.navigate('Sign Up');
   };
 
   const handleLogin = () => {

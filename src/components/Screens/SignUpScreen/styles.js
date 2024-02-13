@@ -33,7 +33,8 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   message: {
-    
+    color: '#2B2A4C',
+    fontWeight: 'bold',
   },
   errorText: {
     color: 'red',
