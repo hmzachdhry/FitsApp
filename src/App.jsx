@@ -31,11 +31,11 @@ function App() {
           }}>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Sign Up" component={SignUpScreen} />
           <Stack.Screen name="Email" component={EmailScreen} />
           <Stack.Screen name="EmailVerification" component={EmailVerification} />
           <Stack.Screen name="Password" component={PasswordScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen
             name="ForgotPassword"
             component={ForgotPasswordScreen}
