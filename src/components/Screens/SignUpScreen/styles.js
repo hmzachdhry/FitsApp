@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
     top: 115,
     left: 115,
     right: 0,
-    paddingHorizontal: 20, 
-    paddingTop: 20, 
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
   inputContainer: {
     width: '80%',
@@ -53,5 +53,11 @@ export const styles = StyleSheet.create({
   errorText: {
     color: 'red',
     // marginBottom: 10,
+  },
+  emailName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#EE4E34',
+    marginBottom: 15,
   },
 });

@@ -13,22 +13,15 @@ import {styles} from './styles';
 
 const SignUpScreen = () => {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
-  const [emailError, setEmailError] = useState('');
 
   
   const navigation = useNavigation(); // Hook to access navigation object
 
-  useEffect(() => {
-    setUsernameError('');
-    setEmailError('');
-  }, []);
-
+ 
   const handleUsernameSubmit = async () => {
     try {
-      const response = await fetch('backend/checkUsername', {
+      const response = await fetch('backend/checkUsernameEndpoint', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,9 +33,11 @@ const SignUpScreen = () => {
         const data = await response.json();
 
         if (data.exists) {
-          setUsernameError('Username already in use. Try another one.');
+          setUsernameError('Username already in use. Please try a different one.');
         } else {
           setUsernameError('');
+          navigation.navigate('Email');
+
           
         }
       } else {
@@ -53,55 +48,7 @@ const SignUpScreen = () => {
     }
   };
 
-  // const handleEmailSubmit = async () => {
-  //   try {
-  //     const response = await fetch('backendEndpoint/checkEmail', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({email}),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-
-  //       if (data.exists) {
-  //         setEmailError('Email already in use. Try another one.');
-  //       } else {
-  //         setEmailError('');
-        
-  //       }
-  //     } else {
-  //       console.error('Error checking email availability');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error checking email availability:', error);
-  //   }
-  // };
-
-  // const handlePasswordSubmit = async () => {
-  //   // Assume there's a registration endpoint on the backend
-  //   try {
-  //     const response = await fetch('backendEndpoint/register', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({username, email, password}),
-  //     });
-
-  //     if (response.ok) {
-  //       // Registration successful, navigate to HomeScreen
-  //       navigation.navigate('Home');
-
-  //       console.error('Error registering user');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error registering user:', error);
-  //   }
-  // };  
-
+// only here to navigate for now
   const handleEmail = () => {
     navigation.navigate('Email')
   }
@@ -123,7 +70,7 @@ const SignUpScreen = () => {
         Your username will be used to login
       </Text>
       <Text style={styles.errorText}>{usernameError}</Text>
-
+{/* onPress should be handleUsernameSubmit once logic is worked out */}
       <TouchableOpacity style={styles.button} onPress={handleEmail}>
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
