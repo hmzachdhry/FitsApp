@@ -4,7 +4,24 @@ const Users = require('../models/users');
 const Profiles = require('../models/profiles');
 
 const secretkey = '1234';
+// app.post('/checkEmail', async (req, res) => {
+//   const {email} = req.body;
 
+//   try {
+//     // Query the User table to check if a user with the specified email exists
+//     const existingUser = await User.findOne({where: {email}});
+
+//     // Send a response indicating whether the email exists
+//     if (existingUser) {
+//       res.json({exists: true}); // Email exists
+//     } else {
+//       res.json({exists: false}); // Email doesn't exist
+//     }
+//   } catch (error) {
+//     console.error('Error checking email:', error);
+//     res.status(500).json({error: 'Internal server error'});
+//   }
+// });
 // User signup
 const signUp = async (req, res, next) => {
   const {username, password, email} = req.body;
@@ -12,7 +29,7 @@ const signUp = async (req, res, next) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Creates user
+    // Creates user. Think I need to add logic here that checks if the username and email exists and then send a response indicating true or false 
     const newUser = await Users.create({
       username,
       password: hashedPassword,
