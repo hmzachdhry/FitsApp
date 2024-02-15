@@ -1,11 +1,9 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
-  Animated,
-  Easing,
   Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
