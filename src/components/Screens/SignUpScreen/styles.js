@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
     color: '#EE4E34',
   },
   errorText: {
-    color: 'red',
+    color: '#EE4E34',
     // marginBottom: 10,
   },
   emailName: {

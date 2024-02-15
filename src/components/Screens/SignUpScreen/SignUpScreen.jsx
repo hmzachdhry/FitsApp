@@ -19,7 +19,7 @@ const SignUpScreen = () => {
  
   const handleUsernameSubmit = async () => {
     try {
-      const response = await fetch('backend/checkUsernameEndpoint', {
+      const response = await fetch('backendAPI/checkUsernameEndpoint', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
