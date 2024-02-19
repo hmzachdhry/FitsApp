@@ -16,6 +16,8 @@ const SignUpScreen = () => {
   
   const navigation = useNavigation(); // Hook to access navigation object
 
+  // Check backend to see if username exists in DB
+
  
   const handleUsernameSubmit = async () => {
     try {
