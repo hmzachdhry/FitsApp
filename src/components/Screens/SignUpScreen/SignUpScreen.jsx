@@ -17,6 +17,7 @@ const SignUpScreen = () => {
   const navigation = useNavigation(); // Hook to access navigation object
 
   // Check backend to see if username exists in DB
+  // Connect through endpoint. Is there a specific DB URL to use?
 
  
   const handleUsernameSubmit = async () => {
