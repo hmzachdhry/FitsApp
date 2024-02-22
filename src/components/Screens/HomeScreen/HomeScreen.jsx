@@ -6,6 +6,8 @@ const HomeScreen = () => {
   const [weatherData, setWeatherData] = useState(null);
   const scrollY = new Animated.Value(0);
 
+  // add weather api and render different values (real feel, hi/lo)
+
   // useEffect(() => {
   //   // Fetch weather data from API
   //   // Replace 'YOUR_API_KEY' and 'YOUR_CITY' with API key and city
