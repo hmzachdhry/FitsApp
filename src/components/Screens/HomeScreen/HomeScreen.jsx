@@ -7,6 +7,7 @@ const HomeScreen = () => {
   const scrollY = new Animated.Value(0);
 
   // add weather api and render different values (real feel, hi/lo)
+  // add navbar to homepage
 
   // useEffect(() => {
   //   // Fetch weather data from API
