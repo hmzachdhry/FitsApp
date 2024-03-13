@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { red } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 
 export const styles = StyleSheet.create({
   header: {
@@ -6,9 +7,11 @@ export const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#3498db', // Customize background color
+    backgroundColor: '#FAF0E4', // Customize background color
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row', // Ensure proper alignment of the elements inside the header
+    marginBottom: 10, // Add margin bottom to give space between header and content
   },
   weatherText: {
     fontSize: 24,
@@ -19,12 +22,13 @@ export const styles = StyleSheet.create({
     color: 'white',
   },
   container: {
+    flex: 1,
     paddingHorizontal: 20,
     paddingTop: 20,
-    backgroundColor: '#F0F0F0',
+    backgroundColor: '#FAF0E4',
   },
   box: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAF0E4',
     borderRadius: 10,
     padding: 20,
     marginBottom: 20,
@@ -35,11 +39,6 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
   },
   weatherIcon: {
     width: 30,
@@ -53,5 +52,26 @@ export const styles = StyleSheet.create({
   temp: {
     fontSize: 16,
     marginBottom: 5,
+  },
+  tabBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#EE4E34', // Change the background color as needed
+    borderTopWidth: 1,
+    borderTopColor: '#FAF0E4', // Change the border color as needed
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  plusButton: {
+    width: 50,
+    height: 50,
+    backgroundColor: '#EE4E34', // Change the button background color
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  plusButtonText: {
+    fontSize: 24,
+    color: '#fff', // Change the button text color
   },
 });
