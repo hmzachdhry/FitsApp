@@ -71,7 +71,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.screenContainer}>
       <Tab.Navigator
         screenOptions={{headerShown: false}}
         tabBarOptions={{

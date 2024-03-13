@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { red } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+
 
 export const styles = StyleSheet.create({
   header: {
@@ -58,7 +58,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#EE4E34', // Change the background color as needed
     borderTopWidth: 1,
-    borderTopColor: '#FAF0E4', // Change the border color as needed
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
@@ -73,5 +72,9 @@ export const styles = StyleSheet.create({
   plusButtonText: {
     fontSize: 24,
     color: '#fff', // Change the button text color
+  },
+  screenContainer: {
+    flex: 1,
+    backgroundColor: '#FAF0E4',
   },
 });
