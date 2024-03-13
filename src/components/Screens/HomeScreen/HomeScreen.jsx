@@ -69,7 +69,7 @@ const HomeScreen = () => {
       </TouchableOpacity>
     );
   };
-
+// eventually will import an icon library and remove the text for tabs
   return (
     <View style={styles.screenContainer}>
       <Tab.Navigator
@@ -77,7 +77,7 @@ const HomeScreen = () => {
         tabBarOptions={{
           style: styles.tabBar, // Apply tab bar styles
         }}>
-        <Tab.Screen name="Home" component={HomeTabComponent} />
+        <Tab.Screen name="Home" component={HomeTabComponent} /> 
         <Tab.Screen name="Fits" component={FitsTabComponent} />
         <Tab.Screen
           name="Upload"
