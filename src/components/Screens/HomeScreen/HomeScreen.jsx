@@ -30,6 +30,7 @@ const HomeScreen = () => {
 
   // Need to fetch users location via Geolocation API and pass city, state as props to HomeTabComponent
   // Is there a way to just doing it using one API?
+  // Add in box that shows today's fit. What is this supposed to display?
 
   const HomeTabComponent = () => (
     <View style={styles.container}>
@@ -53,6 +54,7 @@ const HomeScreen = () => {
       <Text>Sorted outfits</Text>
     </View>
   );
+    // This page will have different groups (months) of pictures and display thumbnails of pics
 
   const UploadTabComponent = ({navigation}) => {
     const handleUploadImage = () => {
